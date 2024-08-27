@@ -63,6 +63,7 @@ const Hero = () => {
             </div>
             <CallToAction 
               buttonText="Agendar llamada consultoría"
+              url= "/reservaLlamada"
             />
           </div>
         </div>
