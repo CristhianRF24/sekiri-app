@@ -3,20 +3,20 @@ import { blog } from '@/app/actions/fetchData';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
-
+import { useRouter } from 'next/router'; // Añadido para obtener ID de la URL
 
 interface BlogData {
     texto: string;
+    id: string; // Nuevo: Aceptar un identificador
 }
 
-
-const Page1: React.FC<BlogData> = ({ texto }) => {
+const Page1: React.FC<BlogData> = ({ texto, id }) => {
     const [data, setData] = useState<any[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await blog();
+                const result = await blog(id); // Pasar el ID para filtrar datos
                 setData(result);
             } catch (err) {
                 console.error('Error al obtener testimonio', err);
@@ -24,11 +24,10 @@ const Page1: React.FC<BlogData> = ({ texto }) => {
         };
 
         fetchData();
-    }, []);
+    }, [id]); // Dependencia en ID
 
     return (
         <div className='flex flex-col items-center justify-center h-screen'>
-         
             <h1 className='mb-3 text-4xl font-extrabold'>{texto}</h1>
             {data && data.length > 0 ? (
                 data.map((item, index) => (

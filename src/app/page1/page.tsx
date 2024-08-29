@@ -7,7 +7,7 @@ import { Metadata } from 'next'
 export const dynamic = 'force-dynamic';
 export async function generateMetadata(): Promise<Metadata> {
   try {
-    const data = await blog();
+    const data = await blog('1');
 
     if (!data || data.length === 0) {
       throw new Error('No data available');
@@ -48,6 +48,7 @@ const Vidas = () => {
     <div>
       <Page1
         texto='Pagina 1'
+        id='1'
       />
 
     </div>

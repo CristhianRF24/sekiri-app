@@ -6,6 +6,7 @@ const page = () => {
     <div>
         <Page1
         texto='Pagina 6'
+        id='7'
       />
     </div>
   )
