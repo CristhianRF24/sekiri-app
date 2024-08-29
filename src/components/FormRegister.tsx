@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -33,11 +33,12 @@ const formSchema = zod.object({
   }),
   textArea: zod.string().min(10, {
     message: "El mensaje es demasiado corto",
+  }).max(500, {
+    message: "El mensaje es demasiado largo",
   }),
 });
 
 const FormRegister = () => {
-  // Configuración de react-hook-form con zod
   const form = useForm<zod.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,11 +48,20 @@ const FormRegister = () => {
     },
   });
 
-  // Función para manejar el envío del formulario
+  const [textAreaValue, setTextAreaValue] = useState("");
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  const [statusMessage, setStatusMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  useEffect(() => {
+    if (textAreaRef.current) {
+      textAreaRef.current.style.height = "auto";
+      textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
+    }
+  }, [textAreaValue]);
+
   const handleSubmit = async (values: zod.infer<typeof formSchema>) => {
     console.log({ values });
 
-    // Llamar a la función de inserción de datos
     const { data, error } = await insertarContactos({
       name: values.name,
       email: values.emailAddress,
@@ -60,18 +70,18 @@ const FormRegister = () => {
 
     if (error) {
       console.error("Error insertando datos:", error);
-      alert("Hubo un error al enviar tus datos. Inténtalo de nuevo.");
+      setStatusMessage({ type: 'error', text: 'Hubo un error al enviar tus datos. Inténtalo de nuevo.' });
     } else {
       console.log("Datos insertados con éxito:", data);
-      alert("¡Gracias! Tu mensaje ha sido enviado con éxito.");
-      form.reset(); // Resetear el formulario después de un envío exitoso
+      setStatusMessage({ type: 'success', text: '¡Gracias! Tu mensaje ha sido enviado con éxito.' });
+      form.reset(); 
+      setTextAreaValue(""); // Resetear el valor del textArea
     }
   };
 
   return (
     <>
       <section className="flex flex-col items-center min-h-screen justify-center p-6">
-        {/* Contenedor del formulario */}
         <div className="w-full max-w-md bg-white p-8 rounded-md shadow-md ">
           <Card className="max-w-md mx-auto">
             <CardHeader>
@@ -86,7 +96,6 @@ const FormRegister = () => {
                   className="flex flex-col gap-4"
                   onSubmit={form.handleSubmit(handleSubmit)}
                 >
-                  {/* Campo de Nombre */}
                   <FormField
                     control={form.control}
                     name="name"
@@ -105,7 +114,6 @@ const FormRegister = () => {
                     )}
                   />
 
-                  {/* Campo de Correo Electrónico */}
                   <FormField
                     control={form.control}
                     name="emailAddress"
@@ -132,12 +140,21 @@ const FormRegister = () => {
                         <FormLabel>Mensaje</FormLabel>
                         <FormControl>
                           <Textarea
-                            className="min-h-[100px]"
-                            placeholder="Escribe tu mensaje aqui"
-                            {...field}
+                            ref={textAreaRef}
+                            value={textAreaValue}
+                            onChange={(e) => {
+                              setTextAreaValue(e.target.value);
+                              field.onChange(e);
+                            }}
+                            className="min-h-[100px] resize-none overflow-hidden"
+                            placeholder="Escribe tu mensaje aquí"
+                            maxLength={100}
                           />
                         </FormControl>
                         <FormMessage />
+                        <p className="text-sm text-gray-500 mt-1">
+                          {100 - textAreaValue.length} caracteres restantes
+                        </p>
                       </FormItem>
                     )}
                   />
@@ -145,11 +162,22 @@ const FormRegister = () => {
                   <Button className="w-full" type="submit">
                     Enviar
                   </Button>
+
+                  {/* Mostrar mensaje de éxito o error */}
+                  {statusMessage && (
+                    <div
+                      className={`mt-4 p-2 text-center rounded ${
+                        statusMessage.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                      }`}
+                    >
+                      {statusMessage.text}
+                    </div>
+                  )}
                 </form>
               </Form>
             </CardContent>
           </Card>
-          <div className="flex justify-center" >
+          <div className="flex justify-center">
             <Link href={"/consultas"}>
               <Button variant={"default"} className="mt-4 bg-sky-600">
                 Ver solicitudes

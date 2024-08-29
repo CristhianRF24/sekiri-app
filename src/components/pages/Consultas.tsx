@@ -41,7 +41,7 @@ const Consultas = () => {
               </CardDescription>
             </CardHeader>
             <CardContent className="p-4">
-              <p className="text-gray-700">{consulta.mensaje}</p>
+              <p className="text-gray-700 overflow-visible">{consulta.mensaje}</p>
             </CardContent>
           </Card>
         ))}
