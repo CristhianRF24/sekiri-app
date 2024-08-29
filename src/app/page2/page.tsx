@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
       throw new Error('No data available');
     }
 
-    const { titulo, descripcion } = data[1]; // Asumiendo que estás obteniendo un solo registro de blog.
+    const { titulo, descripcion } = data[0]; // Asumiendo que estás obteniendo un solo registro de blog.
 
     return {
       title: titulo,

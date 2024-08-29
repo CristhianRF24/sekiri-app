@@ -2,6 +2,7 @@ import Page1 from '@/components/pages/Page1'
 import { Metadata } from 'next';
 import React from 'react'
 import { blog } from '../actions/fetchData';
+
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -12,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
       throw new Error('No data available');
     }
 
-    const { titulo, descripcion } = data[2]; // Asumiendo que estás obteniendo un solo registro de blog.
+    const { titulo, descripcion } = data[0]; // Asumiendo que estás obteniendo un solo registro de blog.
 
     return {
       title: titulo,
