@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Pagina Cristhian Rocha F",
   description: "esta pagina es para un proyecto de mi pasantia usando Next.js 14",
   openGraph: {
-    title: 'esta pagina es para un proyecto de mi pasantia',
+    title: 'Pagina Cristhian Rocha F',
     description: 'esta pagina es para un proyecto de mi pasantia usando Next.js 14',
     url: 'https://misitioweb.com',
     siteName: 'Pagina Cristhian Rocha F',

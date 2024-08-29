@@ -1,6 +1,8 @@
 'use client';
 import { blog } from '@/app/actions/fetchData';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+import { Button } from '../ui/button';
 
 interface BlogData {
     texto: string;
@@ -39,7 +41,16 @@ const Page1: React.FC<BlogData> = ({texto}) => {
       ) : (
         <h2>loading....</h2>
       )}
+      
+      <div className="flex justify-center mt-8">
+        <Link href="/" passHref>
+          <Button variant="default" className="bg-blue-600 text-white">
+            Regresar
+          </Button>
+        </Link>
+      </div>
     </div>
+    
   );
 }
 
