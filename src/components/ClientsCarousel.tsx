@@ -61,7 +61,9 @@ const ClientsCarousel = () => {
                   <CarouselItem key={index} className="w-full flex-shrink-0 md:basis-1/2 lg:basis-1/3 px-2">
                     <Card className="w-full h-64"> {/* Ajusta el ancho y la altura */}
                       <CardHeader>
-                        <CardTitle>{testimonioData.nameCliente}</CardTitle>
+                        <CardTitle>
+                          {testimonioData.nameCliente}
+                        </CardTitle>
                         <CardDescription>Testimonio</CardDescription>
                       </CardHeader>
                       <CardContent className="p-4">

@@ -25,7 +25,8 @@ const buttonVariants = cva(
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
-        tamanio: "  h-11  py-8 px-4 text-xs text-center text-wrap rounded-lg max-w-xs break-words whitespace-normal ",
+        //tamanio: " ",
+       // tamanio: "  h-11  py-8 px-4 text-xs text-center text-wrap rounded-lg max-w-xs break-words whitespace-normal ",
       
 
       },

@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import CallToAction from "./CallToAction";
 import { fetchDataButton } from "@/app/actions/fetchData";
+import Link from "next/link";
 
 interface ButtonData {
   id: number;
   text: string;
+  path?: string;
 }
 
 const Hero = () => {
@@ -18,6 +20,7 @@ const Hero = () => {
         const formattedResult = result.map((item: any) => ({
           id: item.id,
           text: item.text,
+          path: item.path,
         }));
         setData(formattedResult);
       } catch (error) {
@@ -55,15 +58,22 @@ const Hero = () => {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-4 mb-6">
               {data &&
-                data.map((item) => (
-                  <Button key={item.id} size="tamanio" variant="outline">
-                    {item.text}
-                  </Button>
-                ))}
+                data.map((item) => {
+                  return (
+                    <Link key={item.id} href={item.path || "/"} passHref>
+                      <Button
+                        className="w-full max-w-md h-16 py-4 px-6 text-sm text-center rounded-lg break-words whitespace-normal overflow-hidden flex items-center justify-center"
+                        variant="outline"
+                      >
+                        {item.text}
+                      </Button>
+                    </Link>
+                  );
+                })}
             </div>
-            <CallToAction 
+            <CallToAction
               buttonText="Agendar llamada consultoría"
-              url= "/reservaLlamada"
+              url="/reservaLlamada"
             />
           </div>
         </div>
@@ -72,7 +82,6 @@ const Hero = () => {
       <div className="mt-32 text-center container mx-auto ">
         <span className="text-4xl whitespace-pre-line">
           Integra todos los métodos de pago a tu tienda{"\n"} en línea{"\n"}
-         
         </span>
         <span className="block mt-4 text-wrap">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia,
