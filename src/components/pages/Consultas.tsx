@@ -40,7 +40,7 @@ const Consultas = () => {
                 {consulta.email}
               </CardDescription>
             </CardHeader>
-            <CardContent className="p-4">
+            <CardContent className="p-4 overflow-auto">
               <p className="text-gray-700 overflow-visible">{consulta.mensaje}</p>
             </CardContent>
           </Card>

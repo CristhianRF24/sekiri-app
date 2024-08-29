@@ -6,18 +6,19 @@ import Header from "@/components/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sekiri-app.vercel.app/"),
   title: "Pagina Cristhian Rocha F",
-  description: "esta pagina es para un proyecto de mi pasantia usando Next.js 14",
+  description: "Esta página es para un proyecto de mi pasantía usando Next.js 14",
   openGraph: {
     title: 'Pagina Cristhian Rocha F',
-    description: 'esta pagina es para un proyecto de mi pasantia usando Next.js 14',
-    url: 'https://misitioweb.com',
-    siteName: 'Pagina Cristhian Rocha F',
+    description: 'Esta página es para un proyecto de mi pasantía usando Next.js 14',
+    url: 'https://sekiri-app.vercel.app/',
+    siteName: 'Dev Blog',
     images: [
       {
         url: '/img/opengraph.jpg',
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 630,
         alt: 'Descripción de la imagen',
       },
     ],
@@ -33,13 +34,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-     
       <body className={inter.className}>
-       <header><Header/></header>
-       
+        <header><Header/></header>
         {children}
-        
-        </body>
+      </body>
     </html>
   );
 }
