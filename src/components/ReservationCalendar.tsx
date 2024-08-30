@@ -4,7 +4,7 @@ import { Calendar } from "./ui/calendar";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
-const CalendarioReserva = () => {
+const ReservationCalendar = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
 
   return (
@@ -27,4 +27,4 @@ const CalendarioReserva = () => {
   );
 };
 
-export default CalendarioReserva;
+export default ReservationCalendar;

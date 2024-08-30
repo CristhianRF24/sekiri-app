@@ -1,6 +1,5 @@
 'use client';
-
-import React from 'react';
+import {FC} from 'react';
 import Link from 'next/link';
 import { Button } from './ui/button';
 
@@ -9,7 +8,7 @@ interface CallToActionProps {
   url?: string;
 }
 
-const CallToAction: React.FC<CallToActionProps> = ({ buttonText, url = '/' }) => {
+const CallToAction: FC<CallToActionProps> = ({ buttonText, url = '/' }) => {
   return (
     <div className="container mx-auto text-center py-8">
       <Link href={url} passHref>

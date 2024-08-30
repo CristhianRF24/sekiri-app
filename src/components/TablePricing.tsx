@@ -8,19 +8,19 @@ import {
   TableRow,
   TableCell,
 } from "./ui/table";
-import { fetchCanales, fetchPrecios } from "@/app/actions/fetchData";
+import { fetchChanels, fetchPrices } from "@/app/actions/fetchData";
 import CallToAction from "./CallToAction";
 
 const TablePricing = () => {
-  const [precios, setPrecios] = useState<Array<any>>([]);
-  const [canales, setCanales] = useState<Array<any>>([]);
+  const [prices, setPrices] = useState<Array<any>>([]);
+  const [chanels, setChanels] = useState<Array<any>>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const preciosData = await fetchPrecios();
-      const canalesData = await fetchCanales();
-      setPrecios(preciosData);
-      setCanales(canalesData);
+      const pricesData = await fetchPrices();
+      const chanelsData = await fetchChanels();
+      setPrices(pricesData);
+      setChanels(chanelsData);
     };
 
     fetchData();
@@ -50,20 +50,20 @@ const TablePricing = () => {
             <TableHeader>
               <TableRow>
                 <TableHead></TableHead>
-                <TableHead>Free</TableHead>
-                <TableHead>Venture</TableHead>
-                <TableHead>Business</TableHead>
-                <TableHead>Unlimited</TableHead>
+                <TableHead>Gratis</TableHead>
+                <TableHead>Empresa</TableHead>
+                <TableHead>Negocio</TableHead>
+                <TableHead>Limitado</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {precios.map((precio) => (
-                <TableRow key={precio.id}>
-                  <TableCell className="font-medium">{precio.label}</TableCell>
-                  <TableCell>{precio.free}</TableCell>
-                  <TableCell>{precio.venture}</TableCell>
-                  <TableCell>{precio.business}</TableCell>
-                  <TableCell>{precio.unlimited}</TableCell>
+              {prices.map((price) => (
+                <TableRow key={price.id}>
+                  <TableCell className="font-medium">{price.label}</TableCell>
+                  <TableCell>{price.free}</TableCell>
+                  <TableCell>{price.venture}</TableCell>
+                  <TableCell>{price.business}</TableCell>
+                  <TableCell>{price.unlimited}</TableCell>
                 </TableRow>
               ))}
 
@@ -73,28 +73,28 @@ const TablePricing = () => {
                 </TableCell>
               </TableRow>
 
-              {canales.map((canal) => (
-                <TableRow key={canal.id}>
-                  <TableCell className="font-medium">{canal.canal}</TableCell>
+              {chanels.map((chanel) => (
+                <TableRow key={chanel.id}>
+                  <TableCell className="font-medium">{chanel.canal}</TableCell>
                   <TableCell>
-                    {canal.free ? <FaCheck className="text-green-500" /> : ""}
+                    {chanel.free ? <FaCheck className="text-green-500" /> : ""}
                   </TableCell>
                   <TableCell>
-                    {canal.venture ? (
+                    {chanel.venture ? (
                       <FaCheck className="text-green-500" />
                     ) : (
                       ""
                     )}
                   </TableCell>
                   <TableCell>
-                    {canal.business ? (
+                    {chanel.business ? (
                       <FaCheck className="text-green-500" />
                     ) : (
                       ""
                     )}
                   </TableCell>
                   <TableCell>
-                    {canal.unlimited ? (
+                    {chanel.unlimited ? (
                       <FaCheck className="text-green-500" />
                     ) : (
                       ""

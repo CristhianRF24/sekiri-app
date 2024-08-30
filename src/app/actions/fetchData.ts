@@ -12,10 +12,10 @@ export async function fetchDataButton() {
     return data
 }
 
-export async function fetchTestimonio(){
+export async function fetchTestimony(){
     const { data, error} = await supabase
-        .from('cliente')
-        .select('nameCliente, testimonio')
+        .from('client')
+        .select('nameCliente, testimony')
    if (error) {
         console.error('Error fetching data:', error);
         throw new Error('Failed to fetch data');
@@ -23,9 +23,9 @@ export async function fetchTestimonio(){
  return data
 }
 
-export const fetchPrecios = async ()=>{
+export const fetchPrices = async ()=>{
     const {data, error} = await supabase
-    .from('precios')
+    .from('prices')
     .select('*')
     if (error) {
         console.error('Error fetching data:', error);
@@ -35,21 +35,21 @@ export const fetchPrecios = async ()=>{
     }
 }
 
-export const fetchCanales = async ()=>{
+export const fetchChanels = async ()=>{
     const {data, error} = await supabase
-    .from('canales')
+    .from('chanels')
     .select('*')
     if (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error); 
         throw new Error('Failed to fetch data');
     }else{
         return data
     }
 }
 
-export const insertarContactos = async (contacData: any)=>{
+export const fetchInserContacts = async (contacData: any)=>{
     try {
-        console.log("Enviando datos a Supabase:", contacData); // Log para depuración
+        console.log("Enviando datos a Supabase:", contacData); 
         const {data, error} = await supabase
         .from('form_contacto')
         .insert([contacData])
@@ -66,9 +66,21 @@ export const insertarContactos = async (contacData: any)=>{
     }
 }
 
-// /app/actions/fetchData.ts
 
-export const blog = async (id: any) => {
+export const fetchGetContacts = async()=>{
+    const {data, error} = await supabase
+    .from('form_contacto')
+    .select('*')
+    if (error) {
+        console.error('Error fetching data:', error);
+        throw new Error('Failed to fetch data');
+    }else{
+        return data
+    }
+}
+
+
+export const fetchBlog = async (id: any) => {
     const { data, error } = await supabase
         .from('blog')
         .select('titulo, descripcion')
@@ -81,16 +93,3 @@ export const blog = async (id: any) => {
         return data;
     }
 };
-
-
-export const fetchConsultas = async()=>{
-    const {data, error} = await supabase
-    .from('form_contacto')
-    .select('*')
-    if (error) {
-        console.error('Error fetching data:', error);
-        throw new Error('Failed to fetch data');
-    }else{
-        return data
-    }
-}

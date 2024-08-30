@@ -1,13 +1,13 @@
 import Page1 from '@/components/pages/Page1'
 import React from 'react'
-import { blog } from '../actions/fetchData'
+import { fetchBlog } from '../actions/fetchData'
 import { Metadata } from 'next'
 
 
 export const dynamic = 'force-dynamic';
-export async function generateMetadata(): Promise<Metadata> {
+export const generateMetadata = async(): Promise<Metadata> =>{
   try {
-    const data = await blog('1');
+    const data = await fetchBlog('1');
 
     if (!data || data.length === 0) {
       throw new Error('No data available');

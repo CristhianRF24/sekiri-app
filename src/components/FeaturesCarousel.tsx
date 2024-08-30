@@ -1,14 +1,14 @@
 "use client";
-import React from "react";
+import { useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import { Card, CardContent } from "./ui/card";
 import Autoplay from "embla-carousel-autoplay";
 
 const FeaturesCarousel = () => {
-  const plugin = React.useRef(
+  const plugin = useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false })
   );
-  const imagenes = [
+  const imageLogo = [
     "/img/logo-Mastercard.png",
     "/img/seven-eleven.png",
     "/img/VISA-Logo.png",
@@ -26,7 +26,7 @@ const FeaturesCarousel = () => {
         opts={{ align: "start" }}
       >
         <CarouselContent className="w-full  flex gap-x-2">
-          {imagenes.map((imageSrc, index) => (
+          {imageLogo.map((imageSrc, index) => (
             <CarouselItem key={index} className="w-full md:basis-1/2 lg:basis-1/3">
               <div className="relative w-full h-24">
                 <Card className="absolute inset-0 border-none bg-transparent p-0">

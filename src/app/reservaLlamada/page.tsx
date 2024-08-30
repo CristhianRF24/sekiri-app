@@ -1,12 +1,11 @@
-import CalendarioReserva from '@/components/CalendarioReserva'
-import React from 'react'
+import ReservationCalendar from '@/components/ReservationCalendar'
 
-const AboutPage = () => {
+const Calendar = () => {
   return (
     <div>
-      <CalendarioReserva/>
+      <ReservationCalendar/>
     </div>
   )
 }
 
-export default AboutPage
+export default Calendar

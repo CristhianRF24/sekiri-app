@@ -1,38 +1,38 @@
 "use client";
 import {
   Carousel,
-  CarouselPrevious,
-  CarouselNext,
   CarouselItem,
   CarouselContent,
 } from "./ui/carousel";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import Autoplay from "embla-carousel-autoplay";
-import React, { useEffect, useState } from "react";
-import { fetchTestimonio } from "@/app/actions/fetchData";
+import React, { useEffect, useState, useRef } from "react";
+import { fetchTestimony } from "@/app/actions/fetchData";
 
-interface  TestimonioCliente {
+interface  ClientTestimony {
    nameCliente: string,
-   testimonio: string
+   testimony: string
 }
+
 const ClientsCarousel = () => {
-    const plugin = React.useRef(
+
+    const plugin = useRef(
         Autoplay({ delay: 2000, stopOnInteraction: false })
       );
 
-    const [testimonio, setTestimonio] = useState<TestimonioCliente[]>([])
+    const [testimony, setTestimony] = useState<ClientTestimony[]>([])
     useEffect(()=>{
       //obtenemos testimonio
-      const obtenerTestimonio = async() =>{
+      const getTestimony = async() =>{
         try{
-          const datos = await fetchTestimonio();
-          setTestimonio(datos)
+          const data = await fetchTestimony();
+          setTestimony(data)
 
         }catch (error){
           console.error('error al obtener testimonio', error)
         }
       };
-      obtenerTestimonio()
+      getTestimony()
     },[])
 
 
@@ -57,25 +57,23 @@ const ClientsCarousel = () => {
               className="w-full md:max-w-3xl lg:max-w-4xl" // Ajusta el ancho máximo del carrusel
             >
               <CarouselContent className=" rounded-lg">
-                {testimonio.map((testimonioData, index) => (
+                {testimony.map((testimonyData, index) => (
                   <CarouselItem key={index} className="w-full flex-shrink-0 md:basis-1/2 lg:basis-1/3 px-2">
-                    <Card className="w-full h-64"> {/* Ajusta el ancho y la altura */}
+                    <Card className="w-full h-64"> 
                       <CardHeader>
                         <CardTitle>
-                          {testimonioData.nameCliente}
+                          {testimonyData.nameCliente}
                         </CardTitle>
                         <CardDescription>Testimonio</CardDescription>
                       </CardHeader>
                       <CardContent className="p-4">
-                        <p className="text-base">{testimonioData.testimonio}</p>
+                        <p className="text-base">{testimonyData.testimony}</p>
                       </CardContent>
                     </Card>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-{/*              
-              <CarouselPrevious className="absolute left-0" />
-              <CarouselNext className="absolute right-0" /> */}
+
             </Carousel>
           </div>
         </div>

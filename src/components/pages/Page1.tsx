@@ -1,9 +1,8 @@
 'use client';
-import { blog } from '@/app/actions/fetchData';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { fetchBlog } from '@/app/actions/fetchData';
 import { Button } from '../ui/button';
-import { useRouter } from 'next/router'; // Añadido para obtener ID de la URL
 
 interface BlogData {
     texto: string;
@@ -16,7 +15,7 @@ const Page1: React.FC<BlogData> = ({ texto, id }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await blog(id); // Pasar el ID para filtrar datos
+                const result = await fetchBlog(id); // Pasar el ID para filtrar datos
                 setData(result);
             } catch (err) {
                 console.error('Error al obtener testimonio', err);

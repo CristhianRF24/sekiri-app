@@ -1,27 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import * as zod from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+import {Form, FormControl,FormField,FormItem,FormLabel,FormMessage,
 } from "./ui/form";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
+import {Card,CardContent,CardDescription,CardHeader,CardTitle,
 } from "./ui/card";
 import { Textarea } from "./ui/textarea";
-import { insertarContactos } from "@/app/actions/fetchData";
+import { fetchInserContacts } from "@/app/actions/fetchData";
 import Link from "next/link";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as zod from "zod";
+
 
 // Definición del esquema de validación con zod
 const formSchema = zod.object({
@@ -62,10 +52,10 @@ const FormRegister = () => {
   const handleSubmit = async (values: zod.infer<typeof formSchema>) => {
     console.log({ values });
 
-    const { data, error } = await insertarContactos({
+    const { data, error } = await fetchInserContacts({
       name: values.name,
       email: values.emailAddress,
-      mensaje: values.textArea,
+      message: values.textArea,
     });
 
     if (error) {

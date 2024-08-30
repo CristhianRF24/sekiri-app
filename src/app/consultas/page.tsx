@@ -1,10 +1,10 @@
-import Consultas from '@/components/pages/Consultas'
-import React from 'react'
+import PageContacts from '@/components/pages/PageContacts'
+
 
 const page = () => {
   return (
     <div>
-        <Consultas/>
+        <PageContacts/>
     </div>
   )
 }
