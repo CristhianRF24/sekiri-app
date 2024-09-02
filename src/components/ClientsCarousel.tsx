@@ -7,7 +7,7 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import Autoplay from "embla-carousel-autoplay";
 import React, { useEffect, useState, useRef } from "react";
-import { fetchTestimony } from "@/app/actions/fetchData";
+import { fetchTestimony } from "@/actions/fetchData";
 
 interface  ClientTestimony {
    nameCliente: string,

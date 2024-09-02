@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import CallToAction from "./CallToAction";
-import { fetchDataButton } from "@/app/actions/fetchData";
+import { fetchDataButton } from "@/actions/fetchData";
 import Link from "next/link";
 
 interface ButtonData {

@@ -1,8 +1,7 @@
-import Page1 from '@/components/pages/Page1'
-import React from 'react'
-
 import { Metadata } from 'next';
-import { fetchBlog } from '../actions/fetchData';
+import { fetchBlog } from '@/actions/fetchData';
+import Page1 from '@/pages/Page1'
+
 
 
 export const dynamic = 'force-dynamic';

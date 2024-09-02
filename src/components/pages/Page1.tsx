@@ -1,8 +1,8 @@
 'use client';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { fetchBlog } from '@/app/actions/fetchData';
 import { Button } from '../ui/button';
+import { fetchBlog } from '@/actions/fetchData';
 
 interface BlogData {
     texto: string;
@@ -22,7 +22,7 @@ const Page1: React.FC<BlogData> = ({ texto, id }) => {
             }
         };
 
-        fetchData();
+        fetchData(); 
     }, [id]); // Dependencia en ID
 
     return (

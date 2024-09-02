@@ -1,4 +1,4 @@
-import PageContacts from '@/components/pages/PageContacts'
+import PageContacts from '@/pages/PageContacts'
 
 
 const page = () => {

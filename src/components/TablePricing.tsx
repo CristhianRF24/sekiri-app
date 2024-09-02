@@ -8,7 +8,7 @@ import {
   TableRow,
   TableCell,
 } from "./ui/table";
-import { fetchChanels, fetchPrices } from "@/app/actions/fetchData";
+import { fetchChanels, fetchPrices } from "@/actions/fetchData";
 import CallToAction from "./CallToAction";
 
 const TablePricing = () => {

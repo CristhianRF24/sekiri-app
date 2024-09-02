@@ -1,9 +1,9 @@
-import Page1 from '@/components/pages/Page1'
-import React from 'react'
-import { fetchBlog } from '../actions/fetchData';
 import { Metadata } from 'next';
+import { fetchBlog } from '@/actions/fetchData';
+import Page1 from '@/pages/Page1'
 
 export const dynamic = 'force-dynamic';
+
 export const generateMetadata = async(): Promise<Metadata> => {
   try {
     const data = await fetchBlog('3');

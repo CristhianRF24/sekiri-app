@@ -7,7 +7,7 @@ import { Button } from "./ui/button";
 import {Card,CardContent,CardDescription,CardHeader,CardTitle,
 } from "./ui/card";
 import { Textarea } from "./ui/textarea";
-import { fetchInserContacts } from "@/app/actions/fetchData";
+import { fetchInserContacts } from "@/actions/fetchData";
 import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";

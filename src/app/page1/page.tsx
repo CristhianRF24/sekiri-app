@@ -1,6 +1,6 @@
-import Page1 from '@/components/pages/Page1'
+import Page1 from '@/pages/Page1'
 import React from 'react'
-import { fetchBlog } from '../actions/fetchData'
+import { fetchBlog } from '@/actions/fetchData';
 import { Metadata } from 'next'
 
 

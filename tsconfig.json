@@ -19,14 +19,12 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@/components/*": ["./src/components/*"],
-      "@/components*": ["./src/components/pages*"],
-
-      "@/pages/*": ["./src/pages/*"],
-      "@/styles/*": ["./src/styles/*"],
-      "@/utils/*": ["./src/utils/*"],
-      "@/app/*": ["./src/app/*"],
-      "@/actions/*": ["../actions/fetchData*"],
+  "@/components/*": ["./src/components/*"],
+  "@/pages/*": ["./src/components/pages/*"],
+  "@/styles/*": ["./src/styles/*"],
+  "@/utils/*": ["./src/utils/*"],
+  "@/app/*": ["./src/app/*"],
+  "@/actions/*": ["./src/app/actions/*"]
 
     }
   },
